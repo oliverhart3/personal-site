@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oliver Hart III — Media, Technology, AI</title>
+    <meta name="description" content="Oliver Hart III — exploring how AI and culture are converging, and what that means for media, education, and all of us.">
+    <meta property="og:title" content="Oliver Hart III — Media, Technology, AI">
+    <meta property="og:description" content="Exploring how AI and culture are converging — and what that means for media, education, and all of us.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@_threepillars">
+    <meta name="twitter:title" content="Oliver Hart III — Media, Technology, AI">
+    <meta name="twitter:description" content="Exploring how AI and culture are converging — and what that means for media, education, and all of us.">
+    <!-- <link rel="canonical" href="https://yourdomain.com"> -->
+    <style>
+        :root {
+            --fg: #3b2f2f;
+            --bg: #f5f1eb;
+            --muted: #8a7e72;
+            --border: #d6cec4;
+            --hover-bg: #ece7df;
+            --accent: #6b8f71;
+            --accent-light: #dceadc;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --fg: #e8e0d6;
+                --bg: #1c1a17;
+                --muted: #a89c8e;
+                --border: #3a342c;
+                --hover-bg: #252118;
+                --accent: #7fa882;
+                --accent-light: #2a3a2b;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, "Courier New", monospace;
+            font-size: 13px;
+            line-height: 1.75;
+            color: var(--fg);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 56px 20px;
+        }
+
+        /* Links */
+        a {
+            color: var(--fg);
+            text-decoration: none;
+            background-image: linear-gradient(var(--muted), var(--muted));
+            background-size: 100% 1px;
+            background-position: 0 100%;
+            background-repeat: no-repeat;
+            transition: all 0.15s ease;
+        }
+
+        a:hover {
+            background: none;
+            text-decoration: underline;
+        }
+
+        a:focus-visible {
+            outline: 2px dashed var(--fg);
+            outline-offset: 2px;
+        }
+
+        /* Sections */
+        .stack { display: flex; flex-direction: column; gap: 40px; }
+        .stack-sm { display: flex; flex-direction: column; gap: 18px; }
+        .stack-xs { display: flex; flex-direction: column; gap: 10px; }
+
+        /* Header */
+        header {
+            margin-bottom: 48px;
+        }
+
+        header h1 {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* Headings */
+        h2 {
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        h3 {
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .section-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--muted);
+            margin-bottom: 16px;
+        }
+
+        .muted {
+            color: var(--muted);
+        }
+
+        .text-sm {
+            font-size: 12px;
+        }
+
+        /* Focus items */
+        .focus-item {
+            padding: 12px 0;
+        }
+
+        .focus-item h3 {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .focus-item p {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        /* Interest chips */
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 14px;
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 12px;
+            color: var(--muted);
+            background: none;
+            transition: all 0.14s ease;
+            cursor: default;
+        }
+
+        .chip:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-light);
+        }
+
+        /* Signup form */
+        .signup-box {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+        }
+
+        .signup-box p {
+            margin-bottom: 14px;
+            font-size: 13px;
+        }
+
+        .substack-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--accent);
+            color: #f5f1eb;
+            border: none;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: opacity 0.14s ease;
+            background-image: none;
+        }
+
+        .substack-btn:hover {
+            opacity: 0.9;
+            background-image: none;
+            text-decoration: none;
+        }
+
+        /* Divider */
+        hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 0;
+        }
+
+        /* Footer */
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: var(--muted);
+            padding-top: 24px;
+        }
+
+        footer nav {
+            display: flex;
+            gap: 16px;
+        }
+
+        footer a {
+            color: var(--muted);
+        }
+
+        footer a:hover {
+            color: var(--fg);
+        }
+
+        /* Previously badge */
+        .previously {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+
+        .previously::before {
+            content: "~";
+        }
+
+        /* Responsive */
+        @media (max-width: 520px) {
+            .container {
+                padding: 36px 16px;
+            }
+
+            body {
+                font-size: 12px;
+            }
+
+            .substack-btn {
+                display: block;
+                text-align: center;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <h1><a href="#" style="background:none;text-decoration:none;">Oliver Hart III</a></h1>
+                <a href="https://twitter.com/_threepillars" style="font-size:12px;color:var(--muted);">@_threepillars</a>
+            </div>
+        </header>
+
+        <main class="stack">
+            <section id="about" class="stack-sm">
+                <h2>Media / Technology / Artificial Intelligence</h2>
+                <div style="line-height:1.4;">
+                    <p>Currently, Account Executive @Google</p>
+                    <p>Former Teacher @Teach For America</p>
+                </div>
+                <p class="muted" style="margin-top:8px;">Exploring how AI and culture are converging — and what that means for all of us.</p>
+            </section>
+
+            <hr>
+
+            <section class="stack-sm">
+                <div class="section-label">What I've Worked On</div>
+
+                <div class="focus-item">
+                    <h3>Commercial AI Deals</h3>
+                    <p>Structuring partnerships that bring generative AI to enterprise.</p>
+                </div>
+
+                <div class="focus-item">
+                    <h3>Global Media Strategy</h3>
+                    <p>Defining how generative AI reshapes digital marketing and media landscapes.</p>
+                </div>
+
+                <div class="focus-item">
+                    <h3>Public Sector & STEM</h3>
+                    <p>Driving tech partnerships in the public sector and leading STEM education outreach.</p>
+                </div>
+            </section>
+
+            <hr>
+
+            <section id="writing" class="stack-sm">
+                <div class="section-label">Writing & Interests</div>
+                <p>I write about the convergence of culture and technology.</p>
+
+                <div class="chips">
+                    <span class="chip">Tech + AI</span>
+                    <span class="chip">Media</span>
+                    <span class="chip">Education</span>
+                    <span class="chip">Basketball</span>
+                    <span class="chip">Music</span>
+                </div>
+            </section>
+
+            <hr>
+
+            <section id="connect">
+                <div class="signup-box">
+                    <p>New posts on tech, culture, and everything in between.</p>
+                    <a href="https://oliverhart.substack.com" target="_blank" rel="noopener noreferrer" class="substack-btn">Subscribe on Substack →</a>
+                </div>
+            </section>
+
+        </main>
+
+        <hr style="margin-top:40px;">
+
+        <footer>
+            <div>&copy; 2026 Oliver Hart III</div>
+            <nav>
+                <a href="https://twitter.com/_threepillars">twitter</a>
+                <a href="https://oliverhart.substack.com">substack</a>
+                <a href="https://linkedin.com/in/oliverhart">linkedin</a>
+            </nav>
+        </footer>
+    </div>
+</body>
+</html>
